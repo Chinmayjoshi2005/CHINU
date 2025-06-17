@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Course</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+        /* Optional: Stripe Card styling */
+        #card-element {
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            padding: .375rem .75rem;
+        }
+        #card-errors {
+            color: #dc3545;
+            margin-top: .25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="text-center mb-4">Join Course</h1>
+        <form id="join-course-form" action="{% url 'process_payment' %}" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="course" class="form-label">Course Name</label>
+                <input type="text" class="form-control" id="course" name="course" value="{{ course_name }}" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="text" class="form-control" id="price" name="price" value="{{ course_price }}" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="card-element" class="form-label">Credit or Debit Card</label>
+                <div id="card-element"></div>
+                <div id="card-errors" role="alert"></div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="submit-btn">Proceed to Payment</button>
+        </form>
+    </div>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        // Replace with your Stripe publishable key
+        const stripe = Stripe("pk_test_XXXXXXXXXXXXXXXXXXXXXXXX");
+        const elements = stripe.elements();
+        const card = elements.create("card");
+        card.mount("#card-element");
+
+        card.on('change', function(event) {
+            const displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+
+        const form = document.getElementById('join-course-form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            document.getElementById('submit-btn').disabled = true;
+            stripe.createToken(card).then(function(result) {
+                if (result.error) {
+                    // Show error in #card-errors
+                    const errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                    document.getElementById('submit-btn').disabled = false;
+                } else {
+                    // Add the token to the form and submit
+                    const hiddenInput = document.createElement('input');
+                    hiddenInput.setAttribute('type', 'hidden');
+                    hiddenInput.setAttribute('name', 'stripeToken');
+                    hiddenInput.setAttribute('value', result.token.id);
+                    form.appendChild(hiddenInput);
+                    form.submit();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+// filepath: /ecom/ecom/static/js/payment.js
+document.addEventListener('DOMContentLoaded', function() {
+    const paymentForm = document.getElementById('payment-form');
+    
+    if (paymentForm) {
+        paymentForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Add your payment processing logic here
+            const formData = new FormData(paymentForm);
+            
+            fetch('/payments/process/', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '/payments/success/';
+                } else {
+                    window.location.href = '/payments/failure/';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                window.location.href = '/payments/failure/';
+            });
+        });
+    }
+});

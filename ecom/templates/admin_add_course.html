@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Course | CHINU</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+        body { background: #f8fafc; }
+        .add-container { max-width: 400px; margin: 60px auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 2rem; }
+    </style>
+</head>
+<body>
+    <div class="add-container">
+        <h3>Add New Course</h3>
+        {% if msg %}
+        <div class="alert alert-success">{{ msg }}</div>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="title" class="form-label">Course Name</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="instructor" class="form-label">Instructor</label>
+                <input type="text" class="form-control" id="instructor" name="instructor" required>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" id="price" name="price" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Add Course</button>
+        </form>
+        <a href="{% url 'admin_dashboard' %}" class="btn btn-link mt-3">Back to Dashboard</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!-- filepath: /Users/chinmayjoshi/Desktop/ecom/ecom/templates/userpage.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ user.firstname }}!</h1>
+    <p>Your email: {{ user.email }}</p>
+    <p>Your phone number: {{ user.phone }}</p>
+    <p>Your address: {{ user.address }}</p>
+    <p>Your city: {{ user.city }}</p>
+    <p>Your state: {{ user.state }}</p>
+    <p>Your country: {{ user.country }}</p>
+    <p>Your zip code: {{ user.zip }}</p>
+    <p>Your registration date: {{ user.registration_date }}</p>
+    <p>Your last login: {{ user.last_login }}</p>
+    <p>Your profile picture: <img src="{{ user.profile_picture }}" alt="Profile Picture" /></p>
+    <p>Your bio: {{ user.bio }}</p>
+    <p>Your preferences: {{ user.preferences }}</p>
+
+    <!-- Aur bhi info dikha sakte ho -->
+</body>
+</html>

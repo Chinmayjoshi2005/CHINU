@@ -1,0 +1,65 @@
+{% load static %}
+
+    <!-- Modern Footer Start -->
+    <footer class="footer-modern bg-dark text-light pt-3 pb-0">
+        <div class="container py-3">
+            <div class="row g-5">
+                <!-- Quick Links -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="text-white mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a class="footer-link" href="{% url 'about' %}"><i class="fa fa-angle-right me-2"></i>About Us</a></li>
+                        <li><a class="footer-link" href="{% url 'contact' %}"><i class="fa fa-angle-right me-2"></i>Contact Us</a></li>
+                        <li><a class="footer-link" href="#"><i class="fa fa-angle-right me-2"></i>Privacy Policy</a></li>
+                        <li><a class="footer-link" href="#"><i class="fa fa-angle-right me-2"></i>Terms & Condition</a></li>
+                        <li><a class="footer-link" href="#"><i class="fa fa-angle-right me-2"></i>FAQs & Help</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="text-white mb-4">Contact</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Gopal mandir, Naramdave gully, Ahilya Fort, Maheshwar, M.P, INDIA</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 6264854883</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>chinmay30joshi@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social rounded-circle me-2" href="https://x.com/ChinmayJos2313"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle me-2" href="https://www.facebook.com/profile.php?id=100077258002607"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle me-2" href="https://www.youtube.com/@Bhai_Bhai30p"><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle" href="https://www.linkedin.com/in/chinmay-joshi-7a951130b/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <!-- Gallery -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="text-white mb-4">Gallery</h5>
+                    <div class="row g-2">
+                        <div class="col-4">
+                            <img class="img-fluid rounded shadow-sm" src="{% static 'img/course-1.jpg' %}" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid rounded shadow-sm" src="{% static 'img/course-2.jpg' %}" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid rounded shadow-sm" src="{% static 'img/course-3.jpg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <!-- Newsletter -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Newsletter</h5>
+                    <p class="mb-3">Subscribe to get the latest updates and offers.</p>
+                    <form class="position-relative">
+                        <input class="form-control border-0 rounded-pill py-3 ps-4 pe-5 mb-2" type="email" placeholder="Your email" required>
+                        <button type="submit" class="btn btn-primary rounded-pill position-absolute top-0 end-0 mt-2 me-2 px-4">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid border-top border-secondary mt-4">
+            <div class="row">
+                <div class="col-12 text-center py-3">
+                    <small class="mb-0">&copy; {{ now|date:"Y" }} <span class="text-primary">CHINU BHAI LEARNING</span>. All Rights Reserved.</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Modern Footer End -->

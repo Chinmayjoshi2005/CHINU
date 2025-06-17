@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Failure</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Payment Failed</h1>
+        <p>We're sorry, but your payment could not be processed. Please try again later or contact support for assistance.</p>
+        <a href="{% url 'payment_form' %}" class="btn btn-primary">Try Again</a>
+    </div>
+</body>
+</html>
