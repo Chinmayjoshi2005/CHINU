@@ -122,6 +122,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [BASE_DIR/ "static"]
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 PAYPAL_BUSINESS_EMAIL = 'your-paypal-business-email@example.com'
 
 # Email settings
