@@ -10,6 +10,7 @@ distlib==0.3.9
 Django==5.2.1
 executing==2.2.0
 filelock==3.18.0
+gunicorn==23.0.0
 idna==3.10
 ipykernel==6.29.5
 ipython==9.2.0
